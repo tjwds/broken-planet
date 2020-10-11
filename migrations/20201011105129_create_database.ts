@@ -7,6 +7,7 @@ export async function up(knex: Knex): Promise<void> {
         table.integer('age');
         table.boolean('is_messed_up');
         table.boolean('has_been_judged');
+        table.boolean('has_been_posted');
     })
 }
 

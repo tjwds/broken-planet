@@ -1,13 +1,14 @@
 {
 	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
+		"target": "esnext",
+		"module": "esnext",
 		"moduleResolution": "node",
 		"lib": [
 			"es2015"
 		],
 
-		"rootDir": "src",
+		// this is not great, but necessary because of knex.  Blah.
+		"rootDir": "/",
 		"outDir": "lib",
 
 		"strict": true,

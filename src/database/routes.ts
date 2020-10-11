@@ -1,9 +1,26 @@
-// put image in database
+import knexHandle from './knex';
 
-// get all images that are unjudged
+export default class ImageDatabase {
+    constructor () {
+        this.#knexHandle = knexHandle('images');
+    }
 
-// get one messed up image
+    insert = (fileLocation: string) =>
+        this.#knexHandle.insert({ file_location: fileLocation });
 
-// judge an image
+    getAllUnjudged = () =>
+        this.#knexHandle('images').select('id', 'file_location').where({ has_been_judged: false });
 
-// update judgement URLs for images
+    judge = (id: number, judgement: boolean) =>
+        this.#knexHandle('images').where({ id }).update({
+            'is_messed_up': judgement,
+        });
+
+    // TODO update judgement URLs for images
+
+    // TODO get one messed up image
+
+    #knexHandle: any; // todo fix me
+}
+
+
